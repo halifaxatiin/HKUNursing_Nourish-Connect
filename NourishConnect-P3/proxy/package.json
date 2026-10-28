@@ -1,0 +1,8 @@
+{
+  "name": "nourish-connect-proxy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

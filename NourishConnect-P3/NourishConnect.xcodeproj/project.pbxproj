@@ -1,0 +1,680 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04CFF30B49022AD42265D01D /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F1388F2C5A4B94047CE67 /* WeekView.swift */; };
+		075780275EF2C127E57ED23D /* MealResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849EDACCF7884D8BDBCED612 /* MealResultView.swift */; };
+		08D6C7023CF6CEEF924D6C3B /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFECDE5E05E9432AB33C05 /* Components.swift */; };
+		08EDAEA5CCD2BBD047FB3B03 /* LabelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92396F9E996B86E8AC1011C3 /* LabelParser.swift */; };
+		1148619322C52B12C90109C9 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E22FA4BE5828266662C1B /* Alerts.swift */; };
+		186B963A997CC5CBA2E9EBFE /* DishDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ED618499642869C4226B03 /* DishDecision.swift */; };
+		1D8900D7E64DEAB62512C837 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E23697660F4AF84C1CF78 /* SpeechService.swift */; };
+		2D04746BBB5DE67A3F0E3112 /* Narration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7633CB1E146072862785E /* Narration.swift */; };
+		3B8D38E85D49BD43E6C78356 /* LabelParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D675A01A7936CBFDE9D56EB3 /* LabelParserTests.swift */; };
+		421B91D3204C8C61E900A985 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630DAF879CEE75C9FB170EF /* Dish.swift */; };
+		4268B76AD81C42D5140AF88D /* MealPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883766AB32F781219DAF127 /* MealPhotoView.swift */; };
+		455362F444518F879B0D5985 /* NutritionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828823D9CD1400F13A33EE7D /* NutritionTests.swift */; };
+		5D0AED6E09268E1F26F2DF74 /* WeekSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C27C05E81D6FECC34468EA /* WeekSummary.swift */; };
+		60F51518C28494142B386D32 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02B497BFE2E2D9E0A4280FB /* ResultView.swift */; };
+		61A43439BD817873CEEEDADA /* DistressDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF33CBDF17165D147FE61AC /* DistressDetector.swift */; };
+		63DA9641CFE28F4E7A547208 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C17EB1448EA5727172095F /* Strings.swift */; };
+		751D3DEC7FF3D75AD08FB6BB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D404133A559647388D845F3 /* Theme.swift */; };
+		75A3D9643181EB4C3F3DA653 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350D6DF659DFD069ED6CF4CF /* Models.swift */; };
+		775FC297FCC08D5A57D0E4EA /* WellbeingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA6E8273E70297AE8CB8921 /* WellbeingTests.swift */; };
+		79B6E461ECAC3878B55B88A4 /* LabelReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5971B151BC091C8FF4B9D1 /* LabelReader.swift */; };
+		7CB302ED9CD66524744E5C14 /* ScanBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3AE2721F12C8D897535C3 /* ScanBarcodeView.swift */; };
+		82A1227BAF7D757395B652A7 /* MealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03B46A42DCDCCD3D6A22FCE /* MealTests.swift */; };
+		82D0253C8B57078297D83F8E /* ScanLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC372CFA986F8A49F2AEFB2 /* ScanLabelView.swift */; };
+		900AC95781C8183D128452EE /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC682B1622214089A2C7ECA6 /* ScannerView.swift */; };
+		905645E3205A59B23DE2558A /* OpenFoodFactsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C4E9B322C5C05B44481F8 /* OpenFoodFactsClient.swift */; };
+		90705D27E54191267B221FBB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F7D93D2976C2356EA7A103 /* HomeView.swift */; };
+		91F7950FA95E6B62F5200BBE /* CallScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDF1314DE3014A4E9F5EE9 /* CallScreenView.swift */; };
+		93BE967DFB607383B8605BD2 /* MoodRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081F1E219646863CE6842158 /* MoodRules.swift */; };
+		93F450B5D8EB3084613320E4 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5C31A76002D406F6B34119 /* ChatView.swift */; };
+		97CF0E0D686EF628FEE30F6E /* MoodCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0707845A01DB093E73167927 /* MoodCheckView.swift */; };
+		9DA8A72FF1191ED15D2C6FB5 /* ReplyFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A250987EEB7D1E1FE169DC4C /* ReplyFilter.swift */; };
+		9EB4CA60431F89E158DAB3AD /* MealStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F423456A458ADE8D29B31E /* MealStrings.swift */; };
+		A1C5A2230B525782841AE9C9 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A3E60C02ED6556FD5DDD1 /* RootView.swift */; };
+		AE057C1AA42EBA679A7E9C30 /* SafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10BB245476F1C79013552E /* SafetyTests.swift */; };
+		B29DD0426B219F6D5F1E2B8C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75C79381B289EA2636C45A9 /* SettingsView.swift */; };
+		B39527E6BCF4210536A19C3F /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70388249D35BD01E7F851BB /* SpeechRecognizer.swift */; };
+		CBED3429F670046166C51D8D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FF1DF9CF6CBE1650BE99B /* PrivacyInfo.xcprivacy */; };
+		CC232A8889316CEDE1C7BDB6 /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8286D5BBC412E523137EF59 /* DemoData.swift */; };
+		CC78FFAE544C2E4C6EAEB699 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A0958B3B83254122BD405C /* Config.swift */; };
+		CFF58A6EE7ACF4CE3FBF3F85 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FCB91B286D53A5394C961C /* ThemeTests.swift */; };
+		D321164BB00B32D0F3C5E0D3 /* ChatClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF48FEAE4B93981B49DFF67A /* ChatClient.swift */; };
+		D52A086E013EBDD1F5A6D6B0 /* NourishConnectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE2B3A9951729A8CCD7D76 /* NourishConnectApp.swift */; };
+		DC04AAF9DB63D23A4A12376D /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4214430D2110272F349DF3A /* Nutrition.swift */; };
+		DF1CF008DA40A566311FC4F2 /* BreathingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5211E4EB5EA393C3B07AC17 /* BreathingPlan.swift */; };
+		E4D3E15D7CB3BB6C493A7F9D /* DishClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0813F6F226D5B0E3F7A9B4D /* DishClassifier.swift */; };
+		EA0C3F634079BBCBAEFD9840 /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90E8297ABCF4938791762CE /* MoodView.swift */; };
+		EA28A1C881139D732CF812A0 /* DishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADF27DF13C7CAF95ACB85F4 /* DishListView.swift */; };
+		FE764D0A66190D4E7DDE246B /* BreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8E135371374A9AF5D64E54 /* BreathingView.swift */; };
+		FED5CADE729B7D047B5B7DA3 /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C8B2F879DE1FF3B82BD2E /* FoodView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC18197C16999251B60B2045 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8850F5FA7B373394C7655827 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94F5A677ECAA4B1405808251;
+			remoteInfo = NourishConnect;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02ED618499642869C4226B03 /* DishDecision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDecision.swift; sourceTree = "<group>"; };
+		0630DAF879CEE75C9FB170EF /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		0707845A01DB093E73167927 /* MoodCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckView.swift; sourceTree = "<group>"; };
+		081F1E219646863CE6842158 /* MoodRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRules.swift; sourceTree = "<group>"; };
+		08F7D93D2976C2356EA7A103 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		173F1388F2C5A4B94047CE67 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		1D404133A559647388D845F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		2B8E135371374A9AF5D64E54 /* BreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingView.swift; sourceTree = "<group>"; };
+		2C5971B151BC091C8FF4B9D1 /* LabelReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelReader.swift; sourceTree = "<group>"; };
+		350D6DF659DFD069ED6CF4CF /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		37C17EB1448EA5727172095F /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		42F423456A458ADE8D29B31E /* MealStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealStrings.swift; sourceTree = "<group>"; };
+		46026BFDC7E8E14156F5CA2F /* NourishConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NourishConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49FE2B3A9951729A8CCD7D76 /* NourishConnectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NourishConnectApp.swift; sourceTree = "<group>"; };
+		4C7E23697660F4AF84C1CF78 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
+		4CFEB76C905B7BA8AAEBCD0D /* NourishConnectTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = NourishConnectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		608C4E9B322C5C05B44481F8 /* OpenFoodFactsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsClient.swift; sourceTree = "<group>"; };
+		6ADF27DF13C7CAF95ACB85F4 /* DishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishListView.swift; sourceTree = "<group>"; };
+		6FA6E8273E70297AE8CB8921 /* WellbeingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellbeingTests.swift; sourceTree = "<group>"; };
+		6FF33CBDF17165D147FE61AC /* DistressDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistressDetector.swift; sourceTree = "<group>"; };
+		7883766AB32F781219DAF127 /* MealPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPhotoView.swift; sourceTree = "<group>"; };
+		80E7633CB1E146072862785E /* Narration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Narration.swift; sourceTree = "<group>"; };
+		81C27C05E81D6FECC34468EA /* WeekSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSummary.swift; sourceTree = "<group>"; };
+		828823D9CD1400F13A33EE7D /* NutritionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionTests.swift; sourceTree = "<group>"; };
+		849EDACCF7884D8BDBCED612 /* MealResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealResultView.swift; sourceTree = "<group>"; };
+		90FCB91B286D53A5394C961C /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
+		92396F9E996B86E8AC1011C3 /* LabelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelParser.swift; sourceTree = "<group>"; };
+		942E22FA4BE5828266662C1B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		94BFECDE5E05E9432AB33C05 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		9B0FF1DF9CF6CBE1650BE99B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A03B46A42DCDCCD3D6A22FCE /* MealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTests.swift; sourceTree = "<group>"; };
+		A0813F6F226D5B0E3F7A9B4D /* DishClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishClassifier.swift; sourceTree = "<group>"; };
+		A250987EEB7D1E1FE169DC4C /* ReplyFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyFilter.swift; sourceTree = "<group>"; };
+		A5211E4EB5EA393C3B07AC17 /* BreathingPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingPlan.swift; sourceTree = "<group>"; };
+		A70388249D35BD01E7F851BB /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		AA7C8B2F879DE1FF3B82BD2E /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
+		B4214430D2110272F349DF3A /* Nutrition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition.swift; sourceTree = "<group>"; };
+		B4EDF1314DE3014A4E9F5EE9 /* CallScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallScreenView.swift; sourceTree = "<group>"; };
+		C7A0958B3B83254122BD405C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		CC682B1622214089A2C7ECA6 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		D02B497BFE2E2D9E0A4280FB /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		D675A01A7936CBFDE9D56EB3 /* LabelParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelParserTests.swift; sourceTree = "<group>"; };
+		D90E8297ABCF4938791762CE /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
+		DC5C31A76002D406F6B34119 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		DF10BB245476F1C79013552E /* SafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyTests.swift; sourceTree = "<group>"; };
+		DF48FEAE4B93981B49DFF67A /* ChatClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatClient.swift; sourceTree = "<group>"; };
+		DFD3AE2721F12C8D897535C3 /* ScanBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBarcodeView.swift; sourceTree = "<group>"; };
+		E75C79381B289EA2636C45A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E8286D5BBC412E523137EF59 /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
+		EF9A3E60C02ED6556FD5DDD1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		FEC372CFA986F8A49F2AEFB2 /* ScanLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanLabelView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		338240EA933D3509ECAEEF85 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A7B5757D44D982F85869BD80 /* Chat */,
+				42542EC101C44ECC7CAD0F86 /* Food */,
+				43E3BB221F7F93CAE9C6DAAC /* Help */,
+				36EDC65EF0E0497E26028EC9 /* Home */,
+				D67568A9D60BBAD5A8B46063 /* Mood */,
+				4D8F731AFB8138B98965B7EE /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		36EDC65EF0E0497E26028EC9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				08F7D93D2976C2356EA7A103 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3DC642EA58FAEB0D44D6923D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5211E4EB5EA393C3B07AC17 /* BreathingPlan.swift */,
+				DF48FEAE4B93981B49DFF67A /* ChatClient.swift */,
+				E8286D5BBC412E523137EF59 /* DemoData.swift */,
+				A0813F6F226D5B0E3F7A9B4D /* DishClassifier.swift */,
+				02ED618499642869C4226B03 /* DishDecision.swift */,
+				6FF33CBDF17165D147FE61AC /* DistressDetector.swift */,
+				92396F9E996B86E8AC1011C3 /* LabelParser.swift */,
+				2C5971B151BC091C8FF4B9D1 /* LabelReader.swift */,
+				081F1E219646863CE6842158 /* MoodRules.swift */,
+				608C4E9B322C5C05B44481F8 /* OpenFoodFactsClient.swift */,
+				A250987EEB7D1E1FE169DC4C /* ReplyFilter.swift */,
+				A70388249D35BD01E7F851BB /* SpeechRecognizer.swift */,
+				4C7E23697660F4AF84C1CF78 /* SpeechService.swift */,
+				81C27C05E81D6FECC34468EA /* WeekSummary.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		42542EC101C44ECC7CAD0F86 /* Food */ = {
+			isa = PBXGroup;
+			children = (
+				6ADF27DF13C7CAF95ACB85F4 /* DishListView.swift */,
+				AA7C8B2F879DE1FF3B82BD2E /* FoodView.swift */,
+				7883766AB32F781219DAF127 /* MealPhotoView.swift */,
+				849EDACCF7884D8BDBCED612 /* MealResultView.swift */,
+				D02B497BFE2E2D9E0A4280FB /* ResultView.swift */,
+				DFD3AE2721F12C8D897535C3 /* ScanBarcodeView.swift */,
+				FEC372CFA986F8A49F2AEFB2 /* ScanLabelView.swift */,
+				CC682B1622214089A2C7ECA6 /* ScannerView.swift */,
+			);
+			path = Food;
+			sourceTree = "<group>";
+		};
+		43E3BB221F7F93CAE9C6DAAC /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				B4EDF1314DE3014A4E9F5EE9 /* CallScreenView.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		4D8F731AFB8138B98965B7EE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E75C79381B289EA2636C45A9 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		54061101F772D250130912B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46026BFDC7E8E14156F5CA2F /* NourishConnect.app */,
+				4CFEB76C905B7BA8AAEBCD0D /* NourishConnectTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		544BA884DCEF1D775FACF074 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C7A0958B3B83254122BD405C /* Config.swift */,
+				42F423456A458ADE8D29B31E /* MealStrings.swift */,
+				80E7633CB1E146072862785E /* Narration.swift */,
+				9B0FF1DF9CF6CBE1650BE99B /* PrivacyInfo.xcprivacy */,
+				37C17EB1448EA5727172095F /* Strings.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7DE907108C147D98A4CBBAE7 = {
+			isa = PBXGroup;
+			children = (
+				ABB1FEC3330D654181D7ED43 /* App */,
+				338240EA933D3509ECAEEF85 /* Features */,
+				E1C2BE201BEE849FBD48B325 /* Models */,
+				544BA884DCEF1D775FACF074 /* Resources */,
+				3DC642EA58FAEB0D44D6923D /* Services */,
+				9642191B190D3B1139B7A2C8 /* Tests */,
+				54061101F772D250130912B8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9642191B190D3B1139B7A2C8 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D675A01A7936CBFDE9D56EB3 /* LabelParserTests.swift */,
+				A03B46A42DCDCCD3D6A22FCE /* MealTests.swift */,
+				828823D9CD1400F13A33EE7D /* NutritionTests.swift */,
+				DF10BB245476F1C79013552E /* SafetyTests.swift */,
+				90FCB91B286D53A5394C961C /* ThemeTests.swift */,
+				6FA6E8273E70297AE8CB8921 /* WellbeingTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A7B5757D44D982F85869BD80 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				DC5C31A76002D406F6B34119 /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		ABB1FEC3330D654181D7ED43 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				94BFECDE5E05E9432AB33C05 /* Components.swift */,
+				49FE2B3A9951729A8CCD7D76 /* NourishConnectApp.swift */,
+				EF9A3E60C02ED6556FD5DDD1 /* RootView.swift */,
+				1D404133A559647388D845F3 /* Theme.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D67568A9D60BBAD5A8B46063 /* Mood */ = {
+			isa = PBXGroup;
+			children = (
+				2B8E135371374A9AF5D64E54 /* BreathingView.swift */,
+				0707845A01DB093E73167927 /* MoodCheckView.swift */,
+				D90E8297ABCF4938791762CE /* MoodView.swift */,
+				173F1388F2C5A4B94047CE67 /* WeekView.swift */,
+			);
+			path = Mood;
+			sourceTree = "<group>";
+		};
+		E1C2BE201BEE849FBD48B325 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				942E22FA4BE5828266662C1B /* Alerts.swift */,
+				0630DAF879CEE75C9FB170EF /* Dish.swift */,
+				350D6DF659DFD069ED6CF4CF /* Models.swift */,
+				B4214430D2110272F349DF3A /* Nutrition.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4492C2D19B32E30B05A4E945 /* NourishConnectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9E71BC32AC307920680DA4F /* Build configuration list for PBXNativeTarget "NourishConnectTests" */;
+			buildPhases = (
+				535D41FC403C9BA94BC77FBE /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CCFF69D169ED2B6F9D67B203 /* PBXTargetDependency */,
+			);
+			name = NourishConnectTests;
+			packageProductDependencies = (
+			);
+			productName = NourishConnectTests;
+			productReference = 4CFEB76C905B7BA8AAEBCD0D /* NourishConnectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		94F5A677ECAA4B1405808251 /* NourishConnect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 194ADFD9F8A08F5C77C03B5B /* Build configuration list for PBXNativeTarget "NourishConnect" */;
+			buildPhases = (
+				E7764B103DD1F53553B5D48C /* Sources */,
+				08CEBF227E0D31C9056C279C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NourishConnect;
+			packageProductDependencies = (
+			);
+			productName = NourishConnect;
+			productReference = 46026BFDC7E8E14156F5CA2F /* NourishConnect.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8850F5FA7B373394C7655827 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = B1A29B0672662064C3B9A1C1 /* Build configuration list for PBXProject "NourishConnect" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7DE907108C147D98A4CBBAE7;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 54061101F772D250130912B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				94F5A677ECAA4B1405808251 /* NourishConnect */,
+				4492C2D19B32E30B05A4E945 /* NourishConnectTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		08CEBF227E0D31C9056C279C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBED3429F670046166C51D8D /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		535D41FC403C9BA94BC77FBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B8D38E85D49BD43E6C78356 /* LabelParserTests.swift in Sources */,
+				82A1227BAF7D757395B652A7 /* MealTests.swift in Sources */,
+				455362F444518F879B0D5985 /* NutritionTests.swift in Sources */,
+				AE057C1AA42EBA679A7E9C30 /* SafetyTests.swift in Sources */,
+				CFF58A6EE7ACF4CE3FBF3F85 /* ThemeTests.swift in Sources */,
+				775FC297FCC08D5A57D0E4EA /* WellbeingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7764B103DD1F53553B5D48C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1148619322C52B12C90109C9 /* Alerts.swift in Sources */,
+				DF1CF008DA40A566311FC4F2 /* BreathingPlan.swift in Sources */,
+				FE764D0A66190D4E7DDE246B /* BreathingView.swift in Sources */,
+				91F7950FA95E6B62F5200BBE /* CallScreenView.swift in Sources */,
+				D321164BB00B32D0F3C5E0D3 /* ChatClient.swift in Sources */,
+				93F450B5D8EB3084613320E4 /* ChatView.swift in Sources */,
+				08D6C7023CF6CEEF924D6C3B /* Components.swift in Sources */,
+				CC78FFAE544C2E4C6EAEB699 /* Config.swift in Sources */,
+				CC232A8889316CEDE1C7BDB6 /* DemoData.swift in Sources */,
+				421B91D3204C8C61E900A985 /* Dish.swift in Sources */,
+				E4D3E15D7CB3BB6C493A7F9D /* DishClassifier.swift in Sources */,
+				186B963A997CC5CBA2E9EBFE /* DishDecision.swift in Sources */,
+				EA28A1C881139D732CF812A0 /* DishListView.swift in Sources */,
+				61A43439BD817873CEEEDADA /* DistressDetector.swift in Sources */,
+				FED5CADE729B7D047B5B7DA3 /* FoodView.swift in Sources */,
+				90705D27E54191267B221FBB /* HomeView.swift in Sources */,
+				08EDAEA5CCD2BBD047FB3B03 /* LabelParser.swift in Sources */,
+				79B6E461ECAC3878B55B88A4 /* LabelReader.swift in Sources */,
+				4268B76AD81C42D5140AF88D /* MealPhotoView.swift in Sources */,
+				075780275EF2C127E57ED23D /* MealResultView.swift in Sources */,
+				9EB4CA60431F89E158DAB3AD /* MealStrings.swift in Sources */,
+				75A3D9643181EB4C3F3DA653 /* Models.swift in Sources */,
+				97CF0E0D686EF628FEE30F6E /* MoodCheckView.swift in Sources */,
+				93BE967DFB607383B8605BD2 /* MoodRules.swift in Sources */,
+				EA0C3F634079BBCBAEFD9840 /* MoodView.swift in Sources */,
+				2D04746BBB5DE67A3F0E3112 /* Narration.swift in Sources */,
+				D52A086E013EBDD1F5A6D6B0 /* NourishConnectApp.swift in Sources */,
+				DC04AAF9DB63D23A4A12376D /* Nutrition.swift in Sources */,
+				905645E3205A59B23DE2558A /* OpenFoodFactsClient.swift in Sources */,
+				9DA8A72FF1191ED15D2C6FB5 /* ReplyFilter.swift in Sources */,
+				60F51518C28494142B386D32 /* ResultView.swift in Sources */,
+				A1C5A2230B525782841AE9C9 /* RootView.swift in Sources */,
+				7CB302ED9CD66524744E5C14 /* ScanBarcodeView.swift in Sources */,
+				82D0253C8B57078297D83F8E /* ScanLabelView.swift in Sources */,
+				900AC95781C8183D128452EE /* ScannerView.swift in Sources */,
+				B29DD0426B219F6D5F1E2B8C /* SettingsView.swift in Sources */,
+				B39527E6BCF4210536A19C3F /* SpeechRecognizer.swift in Sources */,
+				1D8900D7E64DEAB62512C837 /* SpeechService.swift in Sources */,
+				63DA9641CFE28F4E7A547208 /* Strings.swift in Sources */,
+				751D3DEC7FF3D75AD08FB6BB /* Theme.swift in Sources */,
+				5D0AED6E09268E1F26F2DF74 /* WeekSummary.swift in Sources */,
+				04CFF30B49022AD42265D01D /* WeekView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CCFF69D169ED2B6F9D67B203 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94F5A677ECAA4B1405808251 /* NourishConnect */;
+			targetProxy = CC18197C16999251B60B2045 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		16DE310DAB228D8E75E32D3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		4D1F337171E8D4D8E59928E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.NourishConnectTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NourishConnect.app/NourishConnect";
+			};
+			name = Debug;
+		};
+		885CC4CDEDB51E76FB150040 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		9D6FB2FB9FBE92F043B0E734 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 64Q949Q8PY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "健康伴你行";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSCameraUsageDescription = "用相機掃描條碼、營養標籤同埋影你食嘅嘢";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "用咪高風同你傾偈";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "將你講嘅廣東話變成文字，同你傾偈";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.5.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NC.SSCHK;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		ABFA831208A556319110B266 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 64Q949Q8PY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "健康伴你行";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_NSCameraUsageDescription = "用相機掃描條碼、營養標籤同埋影你食嘅嘢";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "用咪高風同你傾偈";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "將你講嘅廣東話變成文字，同你傾偈";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.5.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NC.SSCHK;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D15A4072B7B78D83C8B8F759 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.NourishConnectTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NourishConnect.app/NourishConnect";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		194ADFD9F8A08F5C77C03B5B /* Build configuration list for PBXNativeTarget "NourishConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D6FB2FB9FBE92F043B0E734 /* Debug */,
+				ABFA831208A556319110B266 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B1A29B0672662064C3B9A1C1 /* Build configuration list for PBXProject "NourishConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				885CC4CDEDB51E76FB150040 /* Debug */,
+				16DE310DAB228D8E75E32D3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D9E71BC32AC307920680DA4F /* Build configuration list for PBXNativeTarget "NourishConnectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D1F337171E8D4D8E59928E7 /* Debug */,
+				D15A4072B7B78D83C8B8F759 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8850F5FA7B373394C7655827 /* Project object */;
+}

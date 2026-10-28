@@ -1,0 +1,18 @@
+name = "nourish-proxy"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Pin an exact model before any evaluation. "~deepseek/deepseek-flash-latest" is an alias that
+# OpenRouter moves to newer versions, which can change replies and price without warning.
+MODEL = "deepseek/deepseek-v4.1-flash"
+# "deny" only routes to providers that do not collect user data. Use "allow" only for demos on fictional data.
+DATA_COLLECTION = "deny"
+DAILY_LIMIT = "100"
+GLOBAL_DAILY_LIMIT = "1000"
+
+# Daily limits need a KV namespace. Create one with:  npx wrangler kv namespace create LIMITS
+# then paste the id below and remove the leading #.
+# [[kv_namespaces]]
+# binding = "LIMITS"
+# id = "PASTE_ID_HERE"

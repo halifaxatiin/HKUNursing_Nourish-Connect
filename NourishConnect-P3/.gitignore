@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Node / Cloudflare Worker
+node_modules/
+proxy/.wrangler/
+proxy/.dev.vars
+.dev.vars
+
+# Secrets and certificates
+.env
+*.pem
+*.p12
+*.mobileprovision
+
+# Competition source material (not ours to republish)
+*.pdf
