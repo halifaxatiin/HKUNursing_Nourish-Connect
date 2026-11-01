@@ -31,9 +31,8 @@ final class SpeechRecognizer: ObservableObject {
         transcript = ""
 
         do {
-            let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.record, mode: .measurement, options: .duckOthers)
-            try session.setActive(true, options: .notifyOthersOnDeactivation)
+            // Audio session changes run on a background queue so the screen never freezes.
+            try await AudioSessionCoordinator.shared.prepareForRecording()
 
             let request = SFSpeechAudioBufferRecognitionRequest()
             request.shouldReportPartialResults = true
@@ -82,7 +81,7 @@ final class SpeechRecognizer: ObservableObject {
         request = nil
         task = nil
         // Back to playback so the Cantonese voice can speak again.
-        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
+        Task { await AudioSessionCoordinator.shared.ensurePlayback() }
         isListening = false
     }
 
