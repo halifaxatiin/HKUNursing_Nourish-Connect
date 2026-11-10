@@ -10,9 +10,8 @@ build/
 CLAUDE.md
 # Node / Cloudflare Worker
 node_modules/
-proxy/.wrangler/
-proxy/.dev.vars
-.dev.vars
+**/.wrangler/
+**/.dev.vars
 
 # Secrets and certificates
 .env

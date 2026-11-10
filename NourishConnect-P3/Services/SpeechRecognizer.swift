@@ -48,7 +48,8 @@ final class SpeechRecognizer: ObservableObject {
                 let text = result?.bestTranscription.formattedString
                 let isFinal = (result?.isFinal ?? false) || error != nil
                 Task { @MainActor in
-                    guard let self else { return }
+                    // A late answer from an earlier recording must not end the current one.
+                    guard let self, self.request === request else { return }
                     if let text { self.transcript = text }
                     if isFinal { self.finish() }
                 }
@@ -79,6 +80,7 @@ final class SpeechRecognizer: ObservableObject {
         if engine.isRunning { engine.stop() }
         request?.endAudio()
         request = nil
+        task?.cancel()
         task = nil
         // Back to playback so the Cantonese voice can speak again.
         Task { await AudioSessionCoordinator.shared.ensurePlayback() }

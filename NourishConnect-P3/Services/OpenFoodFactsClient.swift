@@ -9,8 +9,8 @@ enum LookupResult: Equatable {
 
 /// Reads a product from Open Food Facts by barcode.
 /// Open Food Facts is a free, open database (ODbL licence). Check its licence terms and its
-/// Hong Kong coverage before relying on it, and set a real contact address in the User-Agent
-/// as its API guidelines ask.
+/// Hong Kong coverage before relying on it. The User-Agent names the project and where to
+/// reach it, as its API guidelines ask.
 struct OpenFoodFactsClient {
     var session: URLSession = .shared
 
@@ -23,8 +23,7 @@ struct OpenFoodFactsClient {
             URLQueryItem(name: "fields", value: "product_name,product_name_zh,nutriments")
         ]
         var request = URLRequest(url: components.url!, timeoutInterval: 8)
-        // TODO: replace with the team's real contact address before wider use.
-        request.setValue("NourishConnect/0.2 (student project; contact: your-email@example.com)",
+        request.setValue("NourishConnect/0.5 (student project; https://github.com/halifaxatiin/HKUNursing_Nourish-Connect)",
                          forHTTPHeaderField: "User-Agent")
 
         let (data, response) = try await session.data(for: request)

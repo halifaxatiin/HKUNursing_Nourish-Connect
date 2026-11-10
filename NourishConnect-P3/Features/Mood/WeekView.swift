@@ -5,10 +5,17 @@ import SwiftData
 /// Everything comes from what is saved on the phone.
 struct WeekView: View {
     @Environment(\.theme) private var theme
-    @Query(sort: \MealEntry.date, order: .reverse) private var meals: [MealEntry]
-    @Query(sort: \MoodEntry.date, order: .reverse) private var moods: [MoodEntry]
-
+    @Query private var meals: [MealEntry]
+    @Query private var moods: [MoodEntry]
     @Query private var alerts: [AlertEvent]
+
+    init() {
+        // Only the week on screen is loaded, not every record ever saved.
+        let cutoff = WeekSummary.cutoff(daysBack: 7)
+        _meals = Query(filter: #Predicate<MealEntry> { $0.date >= cutoff })
+        _moods = Query(filter: #Predicate<MoodEntry> { $0.date >= cutoff })
+        _alerts = Query(filter: #Predicate<AlertEvent> { $0.date >= cutoff })
+    }
 
     private var days: [DaySummary] {
         WeekSummary.build(

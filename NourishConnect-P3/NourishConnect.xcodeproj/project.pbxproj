@@ -15,6 +15,7 @@
 		186B963A997CC5CBA2E9EBFE /* DishDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ED618499642869C4226B03 /* DishDecision.swift */; };
 		1D8900D7E64DEAB62512C837 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E23697660F4AF84C1CF78 /* SpeechService.swift */; };
 		2D04746BBB5DE67A3F0E3112 /* Narration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7633CB1E146072862785E /* Narration.swift */; };
+		33E1C55AF21A6087ACB3C5A1 /* ImageScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1480AF9954925348683B46 /* ImageScaling.swift */; };
 		3B8D38E85D49BD43E6C78356 /* LabelParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D675A01A7936CBFDE9D56EB3 /* LabelParserTests.swift */; };
 		421B91D3204C8C61E900A985 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630DAF879CEE75C9FB170EF /* Dish.swift */; };
 		4268B76AD81C42D5140AF88D /* MealPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883766AB32F781219DAF127 /* MealPhotoView.swift */; };
@@ -81,7 +82,7 @@
 		350D6DF659DFD069ED6CF4CF /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		37C17EB1448EA5727172095F /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		42F423456A458ADE8D29B31E /* MealStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealStrings.swift; sourceTree = "<group>"; };
-		46026BFDC7E8E14156F5CA2F /* NourishConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NourishConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46026BFDC7E8E14156F5CA2F /* NourishConnect.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = NourishConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FE2B3A9951729A8CCD7D76 /* NourishConnectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NourishConnectApp.swift; sourceTree = "<group>"; };
 		4C7E23697660F4AF84C1CF78 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		4CFEB76C905B7BA8AAEBCD0D /* NourishConnectTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = NourishConnectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +99,8 @@
 		92396F9E996B86E8AC1011C3 /* LabelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelParser.swift; sourceTree = "<group>"; };
 		942E22FA4BE5828266662C1B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		94BFECDE5E05E9432AB33C05 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
-		9B0FF1DF9CF6CBE1650BE99B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		9B0FF1DF9CF6CBE1650BE99B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		9C1480AF9954925348683B46 /* ImageScaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScaling.swift; sourceTree = "<group>"; };
 		A03B46A42DCDCCD3D6A22FCE /* MealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTests.swift; sourceTree = "<group>"; };
 		A0813F6F226D5B0E3F7A9B4D /* DishClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishClassifier.swift; sourceTree = "<group>"; };
 		A250987EEB7D1E1FE169DC4C /* ReplyFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyFilter.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				A0813F6F226D5B0E3F7A9B4D /* DishClassifier.swift */,
 				02ED618499642869C4226B03 /* DishDecision.swift */,
 				6FF33CBDF17165D147FE61AC /* DistressDetector.swift */,
+				9C1480AF9954925348683B46 /* ImageScaling.swift */,
 				92396F9E996B86E8AC1011C3 /* LabelParser.swift */,
 				2C5971B151BC091C8FF4B9D1 /* LabelReader.swift */,
 				081F1E219646863CE6842158 /* MoodRules.swift */,
@@ -331,6 +334,11 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					94F5A677ECAA4B1405808251 = {
+						DevelopmentTeam = 64Q949Q8PY;
+					};
+				};
 			};
 			buildConfigurationList = B1A29B0672662064C3B9A1C1 /* Build configuration list for PBXProject "NourishConnect" */;
 			developmentRegion = en;
@@ -397,6 +405,7 @@
 				61A43439BD817873CEEEDADA /* DistressDetector.swift in Sources */,
 				FED5CADE729B7D047B5B7DA3 /* FoodView.swift in Sources */,
 				90705D27E54191267B221FBB /* HomeView.swift in Sources */,
+				33E1C55AF21A6087ACB3C5A1 /* ImageScaling.swift in Sources */,
 				08EDAEA5CCD2BBD047FB3B03 /* LabelParser.swift in Sources */,
 				79B6E461ECAC3878B55B88A4 /* LabelReader.swift in Sources */,
 				4268B76AD81C42D5140AF88D /* MealPhotoView.swift in Sources */,
@@ -497,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -576,6 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NourishConnect.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64Q949Q8PY;
@@ -584,7 +595,7 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "用相機掃描條碼、營養標籤同埋影你食嘅嘢";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "用咪高風同你傾偈";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "將你講嘅廣東話變成文字，同你傾偈";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "將你講嘅廣東話變成文字，同你傾偈。如果手機自己做唔到，聲音會送去Apple處理";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -604,6 +615,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NourishConnect.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64Q949Q8PY;
@@ -612,7 +624,7 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSCameraUsageDescription = "用相機掃描條碼、營養標籤同埋影你食嘅嘢";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "用咪高風同你傾偈";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "將你講嘅廣東話變成文字，同你傾偈";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "將你講嘅廣東話變成文字，同你傾偈。如果手機自己做唔到，聲音會送去Apple處理";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -632,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

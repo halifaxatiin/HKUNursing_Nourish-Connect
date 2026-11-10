@@ -29,8 +29,8 @@ struct ChatView: View {
     @Environment(\.theme) private var theme
     @EnvironmentObject private var speech: SpeechService
     @StateObject private var recognizer = SpeechRecognizer()
-    @Query(sort: \MealEntry.date, order: .reverse) private var meals: [MealEntry]
-    @Query(sort: \MoodEntry.date, order: .reverse) private var moods: [MoodEntry]
+    @Query private var meals: [MealEntry]
+    @Query private var moods: [MoodEntry]
 
     @State private var bubbles: [ChatBubble] = [
         ChatBubble(role: .assistant, text: Str.chatWelcome, localOnly: true)
@@ -41,6 +41,13 @@ struct ChatView: View {
     @State private var showSupportOffer = false
 
     private let client = ChatClient()
+
+    init() {
+        // The chat only uses today's records, so only recent ones are loaded.
+        let cutoff = WeekSummary.cutoff(daysBack: 1)
+        _meals = Query(filter: #Predicate<MealEntry> { $0.date >= cutoff })
+        _moods = Query(filter: #Predicate<MoodEntry> { $0.date >= cutoff })
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -238,8 +245,10 @@ struct ChatView: View {
                                   modelText: display == nil ? nil : text,
                                   localOnly: false))
         sending = true
-        let outcome = await ask()
+        let today = self.today
+        let outcome = await ask(today: today)
         sending = false
+        let tipFallback = { TipFallback.tip(for: today, now: .now) }
 
         switch outcome {
         case .reply(let reply):
@@ -261,7 +270,7 @@ struct ChatView: View {
     }
 
     @MainActor
-    private func ask() async -> Outcome {
+    private func ask(today: DaySummary?) async -> Outcome {
         guard Config.isChatConfigured else { return .unavailable }
         do {
             let raw = try await client.reply(history: modelHistory(), context: ChatContext.lines(for: today))
@@ -299,10 +308,6 @@ struct ChatView: View {
             now: .now,
             days: 1
         ).first
-    }
-
-    private func tipFallback() -> String {
-        TipFallback.tip(for: today, now: .now)
     }
 
     private func append(_ role: ChatBubble.Role, _ text: String, localOnly: Bool) {

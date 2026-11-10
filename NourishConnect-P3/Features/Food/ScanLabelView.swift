@@ -15,6 +15,8 @@ struct ScanLabelView: View {
     @State private var phase: Phase = .ready
     @State private var outcome: ScanOutcome?
     @State private var pickerItem: PhotosPickerItem?
+    /// Kept large so small print on a label stays readable, but well under a 48 MP photo.
+    private static let maxPhotoSide: CGFloat = 3000
 
     var body: some View {
         ScrollView {
@@ -34,7 +36,7 @@ struct ScanLabelView: View {
             guard let item else { return }
             Task { @MainActor in
                 if let data = try? await item.loadTransferable(type: Data.self),
-                   let image = UIImage(data: data) {
+                   let image = UIImage.scaledDown(from: data, maxSide: Self.maxPhotoSide) {
                     await process(image)
                 }
                 pickerItem = nil
@@ -124,7 +126,8 @@ struct ScanLabelView: View {
         phase = .reading
         speech.speak(Str.labelReading, rate: theme.speechRate)
         do {
-            let text = try await LabelReader.recognizeText(in: image)
+            let small = await image.scaledDown(maxSide: Self.maxPhotoSide)
+            let text = try await LabelReader.recognizeText(in: small)
             let facts = LabelParser.parse(text)
             if facts.hasRatableValues {
                 phase = .ready

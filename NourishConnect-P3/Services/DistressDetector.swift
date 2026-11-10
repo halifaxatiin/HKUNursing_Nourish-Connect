@@ -40,17 +40,22 @@ enum DistressDetector {
         "lonely", "hopeless", "so sad", "depressed", "anxious", "scared"
     ]
 
+    // The lists are normalised once, not for every message.
+    private static let normalizedSelfHarm = selfHarmPhrases.map(TextNormalizer.normalize)
+    private static let normalizedMedical = medicalPhrases.map(TextNormalizer.normalize)
+    private static let normalizedConcern = concernPhrases.map(TextNormalizer.normalize)
+
     static func evaluate(_ text: String) -> DistressLevel {
         let n = TextNormalizer.normalize(text)
         guard !n.isEmpty else { return .none }
 
-        if selfHarmPhrases.contains(where: { n.contains(TextNormalizer.normalize($0)) }) {
+        if normalizedSelfHarm.contains(where: { n.contains($0) }) {
             return .urgent(.distressWords)
         }
-        if medicalPhrases.contains(where: { n.contains(TextNormalizer.normalize($0)) }) {
+        if normalizedMedical.contains(where: { n.contains($0) }) {
             return .urgent(.medicalEmergency)
         }
-        if concernPhrases.contains(where: { n.contains(TextNormalizer.normalize($0)) }) {
+        if normalizedConcern.contains(where: { n.contains($0) }) {
             return .concern
         }
         return .none

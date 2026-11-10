@@ -13,10 +13,16 @@ struct MoodCheckView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var speech: SpeechService
-    @Query(sort: \MoodEntry.date, order: .reverse) private var moods: [MoodEntry]
+    @Query private var moods: [MoodEntry]
 
     @State private var phase: Phase = .choosing
     @State private var callReason: CallReason?
+
+    init() {
+        // MoodRules only looks at the last few days, so only those are loaded.
+        let cutoff = WeekSummary.cutoff(daysBack: MoodRules.windowDays)
+        _moods = Query(filter: #Predicate<MoodEntry> { $0.date >= cutoff })
+    }
 
     var body: some View {
         ScrollView {
@@ -128,6 +134,7 @@ struct MoodCheckView: View {
     private func choose(_ level: Int) {
         let now = Date.now
         context.insert(MoodEntry(date: now, level: level, source: "tap"))
+        try? context.save()
 
         // The new entry is not in `moods` yet, so add it by hand.
         var entries = moods.map { (date: $0.date, level: $0.level) }

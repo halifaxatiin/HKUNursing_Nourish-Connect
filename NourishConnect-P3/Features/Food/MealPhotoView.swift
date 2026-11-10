@@ -23,6 +23,8 @@ struct MealPhotoView: View {
     @State private var pickerItem: PhotosPickerItem?
 
     private let classifier: DishClassifying = CoreMLDishClassifier()
+    /// Enough for the screen and far more than the model needs. A full camera photo is 12 MP or more.
+    private static let maxPhotoSide: CGFloat = 1280
 
     var body: some View {
         ScrollView {
@@ -66,7 +68,7 @@ struct MealPhotoView: View {
             guard let item else { return }
             Task { @MainActor in
                 if let data = try? await item.loadTransferable(type: Data.self),
-                   let picked = UIImage(data: data) {
+                   let picked = UIImage.scaledDown(from: data, maxSide: Self.maxPhotoSide) {
                     await process(picked)
                 }
                 pickerItem = nil
@@ -165,7 +167,8 @@ struct MealPhotoView: View {
     // MARK: Logic
 
     @MainActor
-    private func process(_ picked: UIImage) async {
+    private func process(_ original: UIImage) async {
+        let picked = await original.scaledDown(maxSide: Self.maxPhotoSide)
         image = picked
         guard classifier.isAvailable else {
             phase = .noModel

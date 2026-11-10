@@ -6,8 +6,10 @@
 //
 // Secrets (set with `wrangler secret put`): OPENROUTER_API_KEY, APP_TOKEN
 // Optional variables: MODEL, DATA_COLLECTION ("deny" by default), REQUIRE_ZDR ("true"),
-//   DAILY_LIMIT (messages per phone per day), GLOBAL_DAILY_LIMIT, APP_URL
-// Optional KV binding: LIMITS (needed for the daily limits to work)
+//   DAILY_LIMIT (messages per phone per day), IP_DAILY_LIMIT (per network address per day),
+//   GLOBAL_DAILY_LIMIT, APP_URL
+// Durable Object binding: LIMITS (class DailyCounter, set up in wrangler.toml). Without it the
+//   proxy refuses to run, so the daily limits can never be off by accident.
 
 export const SYSTEM_PROMPT = [
   "你係「健康伴你行」手機應用程式入面嘅陪伴助手，同一位香港長者用廣東話傾偈。",
@@ -23,6 +25,7 @@ export const SYSTEM_PROMPT = [
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
 const DEFAULT_MODEL = "~deepseek/deepseek-flash-latest";
 const DEFAULT_DAILY_LIMIT = 40;
+const DEFAULT_IP_DAILY_LIMIT = 300;
 const DEFAULT_GLOBAL_DAILY_LIMIT = 2000;
 const MAX_BODY_CHARS = 8000;
 
@@ -30,6 +33,13 @@ const MAX_MESSAGES = 12;
 const MAX_MESSAGE_CHARS = 500;
 const MAX_CONTEXT_LINES = 5;
 const MAX_CONTEXT_CHARS = 80;
+
+// The only context lines the app writes (ChatContext in Services/WeekSummary.swift). The context
+// goes into the system prompt, so anything else is dropped: free text there could change the rules.
+const CONTEXT_PATTERNS = [
+  /^今日心情記錄：(幾好|有啲寂寞|唔係幾好)$/,
+  /^今日食物記錄：\d{1,3}樣(，其中\d{1,3}樣糖或鈉偏高)?$/
+];
 
 function json(status, body) {
   return new Response(JSON.stringify(body), {
@@ -75,7 +85,8 @@ export function validate(body) {
       if (typeof line !== "string" || line.length > MAX_CONTEXT_CHARS) {
         return { ok: false, error: "bad_context" };
       }
-      cleanContext.push(line.replace(/[\r\n]+/g, " ").trim());
+      const clean = line.trim();
+      if (CONTEXT_PATTERNS.some((p) => p.test(clean))) cleanContext.push(clean);
     }
   }
 
@@ -110,25 +121,78 @@ export function buildUpstreamBody(value, env) {
   };
 }
 
-async function underLimits(env, installId, now) {
-  if (!env.LIMITS) return true; // no KV bound: limits are off
+/**
+ * Counts one day's messages. There is one instance per day. A Durable Object handles one request
+ * at a time, so two messages arriving together can never both read the same count.
+ */
+export class DailyCounter {
+  constructor(state) {
+    this.storage = state.storage;
+    this.queue = Promise.resolve();
+  }
+
+  /** Body: { keys, limits }. Adds one to every key, unless any key is already at its limit. */
+  async fetch(request) {
+    const { keys, limits } = await request.json();
+    // One at a time: each count is read and written before the next request starts.
+    const result = this.queue.then(() => this.take(keys, limits));
+    this.queue = result.catch(() => {});
+    return result;
+  }
+
+  async take(keys, limits) {
+    const counts = await this.storage.get(keys);
+    if (keys.some((k, i) => (counts.get(k) || 0) >= limits[i])) return json(200, { ok: false });
+
+    const next = {};
+    for (const k of keys) next[k] = (counts.get(k) || 0) + 1;
+    await this.storage.put(next);
+    // Clear this day's counts two days later.
+    if ((await this.storage.getAlarm()) === null) {
+      await this.storage.setAlarm(Date.now() + 172800000);
+    }
+    return json(200, { ok: true });
+  }
+
+  async alarm() {
+    await this.storage.deleteAll();
+  }
+}
+
+/** The install id comes from the phone and can be made up, so the network address is counted too. */
+function addressKey(ip) {
+  // IPv6: one home or phone gets a whole /64, so count by that.
+  return ip.includes(":") ? ip.split(":").slice(0, 4).join(":") : ip;
+}
+
+async function underLimits(env, installId, ip, now) {
   const day = now.toISOString().slice(0, 10);
-  const perKey = `d:${installId}:${day}`;
-  const globalKey = `g:${day}`;
-  const perLimit = Number(env.DAILY_LIMIT) || DEFAULT_DAILY_LIMIT;
-  const globalLimit = Number(env.GLOBAL_DAILY_LIMIT) || DEFAULT_GLOBAL_DAILY_LIMIT;
+  const keys = [`i:${installId}`, "g"];
+  const limits = [
+    Number(env.DAILY_LIMIT) || DEFAULT_DAILY_LIMIT,
+    Number(env.GLOBAL_DAILY_LIMIT) || DEFAULT_GLOBAL_DAILY_LIMIT
+  ];
+  if (ip) {
+    keys.push(`p:${addressKey(ip)}`);
+    limits.push(Number(env.IP_DAILY_LIMIT) || DEFAULT_IP_DAILY_LIMIT);
+  }
 
-  const [per, glob] = await Promise.all([env.LIMITS.get(perKey), env.LIMITS.get(globalKey)]);
-  const perCount = Number(per || 0);
-  const globalCount = Number(glob || 0);
-  if (perCount >= perLimit || globalCount >= globalLimit) return false;
+  const counter = env.LIMITS.get(env.LIMITS.idFromName(day));
+  const res = await counter.fetch("https://limits/take", {
+    method: "POST",
+    body: JSON.stringify({ keys, limits })
+  });
+  return (await res.json()).ok === true;
+}
 
-  const opts = { expirationTtl: 172800 };
-  await Promise.all([
-    env.LIMITS.put(perKey, String(perCount + 1), opts),
-    env.LIMITS.put(globalKey, String(globalCount + 1), opts)
-  ]);
-  return true;
+/** Compares without stopping at the first different character, so timing does not leak the token. */
+function sameToken(given, expected) {
+  const encoder = new TextEncoder();
+  const a = encoder.encode(given || "");
+  const b = encoder.encode(expected);
+  let diff = a.length ^ b.length;
+  for (let i = 0; i < a.length; i++) diff |= a[i] ^ b[i % b.length];
+  return diff === 0;
 }
 
 export async function handleRequest(request, env, fetchImpl = fetch, now = new Date()) {
@@ -136,11 +200,15 @@ export async function handleRequest(request, env, fetchImpl = fetch, now = new D
   if (request.method !== "POST" || url.pathname !== "/chat") {
     return json(404, { error: "not_found" });
   }
-  if (!env.OPENROUTER_API_KEY || !env.APP_TOKEN) {
+  if (!env.OPENROUTER_API_KEY || !env.APP_TOKEN || !env.LIMITS) {
     return json(500, { error: "not_configured" });
   }
-  if (request.headers.get("X-App-Token") !== env.APP_TOKEN) {
+  if (!sameToken(request.headers.get("X-App-Token"), env.APP_TOKEN)) {
     return json(401, { error: "unauthorized" });
+  }
+  // Turn away an oversized body before reading it. A character is at most 4 bytes.
+  if (Number(request.headers.get("Content-Length")) > MAX_BODY_CHARS * 4) {
+    return json(413, { error: "too_large" });
   }
 
   const text = await request.text();
@@ -155,9 +223,13 @@ export async function handleRequest(request, env, fetchImpl = fetch, now = new D
   const checked = validate(body);
   if (!checked.ok) return json(400, { error: checked.error });
 
-  if (!(await underLimits(env, checked.value.installId, now))) {
-    return json(429, { error: "limit" });
+  let allowed;
+  try {
+    allowed = await underLimits(env, checked.value.installId, request.headers.get("CF-Connecting-IP"), now);
+  } catch {
+    return json(503, { error: "limits_unavailable" });
   }
+  if (!allowed) return json(429, { error: "limit" });
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 15000);

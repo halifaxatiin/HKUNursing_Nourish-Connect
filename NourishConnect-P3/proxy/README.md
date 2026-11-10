@@ -20,10 +20,7 @@ Up to 8 recent chat turns (each cut to 400 characters), up to 5 short lines such
    wrangler secret put OPENROUTER_API_KEY
    wrangler secret put APP_TOKEN        # any long random string you invent
    ```
-5. For daily limits, create a KV namespace, then paste its id into `wrangler.toml` and remove the `#` marks:
-   ```
-   wrangler kv namespace create LIMITS
-   ```
+5. Daily limits need no setup: `wrangler.toml` declares a small Durable Object (`DailyCounter`) that counts messages per phone, per network address and in total. The proxy refuses to run without it.
 6. `wrangler deploy`. It prints an address like `https://nourish-proxy.your-name.workers.dev`.
 7. In the app, open `Resources/Config.swift` and set `chatEndpoint` to that address plus `/chat`, and `appToken` to the same string you used for `APP_TOKEN`. Rebuild.
 
@@ -46,4 +43,4 @@ You should get `{"reply":"..."}`.
 
 ## Tests
 
-`npm test` (Node 18 or later). They check: the app cannot send a system message, limits work, the key never appears in an error, the safety prompt and privacy setting are always sent, and bad requests never reach OpenRouter.
+`npm test` (Node 18 or later). They check: the app cannot send a system message, only the app's own context lines reach the prompt, limits work (also for messages arriving together and made-up install ids), the key never appears in an error, the safety prompt and privacy setting are always sent, and bad requests never reach OpenRouter.

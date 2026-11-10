@@ -30,15 +30,21 @@ struct CoreMLDishClassifier: DishClassifying {
         Bundle.main.url(forResource: modelName, withExtension: "mlmodelc")
     }
 
+    /// Loaded on first use and kept: reading the model from disk for every photo is slow.
+    private static let model: VNCoreMLModel? = {
+        guard let url = modelURL() else { return nil }
+        return try? VNCoreMLModel(for: MLModel(contentsOf: url))
+    }()
+
     var isAvailable: Bool { Self.modelURL() != nil }
 
     func classify(_ image: UIImage) async throws -> [RawGuess] {
-        guard let url = Self.modelURL() else { throw DishClassifierError.noModel }
+        guard Self.modelURL() != nil else { throw DishClassifierError.noModel }
         guard let cgImage = image.cgImage else { throw DishClassifierError.badImage }
         let orientation = CGImagePropertyOrientation(uiOrientation: image.imageOrientation)
 
         return try await Task.detached(priority: .userInitiated) {
-            let model = try VNCoreMLModel(for: MLModel(contentsOf: url))
+            guard let model = Self.model else { throw DishClassifierError.noModel }
             let request = VNCoreMLRequest(model: model)
             request.imageCropAndScaleOption = .centerCrop
             let handler = VNImageRequestHandler(cgImage: cgImage, orientation: orientation)

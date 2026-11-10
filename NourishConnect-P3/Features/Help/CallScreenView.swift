@@ -95,6 +95,8 @@ struct CallScreenView: View {
 
     private func log(_ action: String) {
         context.insert(AlertEvent(trigger: reason.logKey, action: action))
+        // Save now: the app may be closed or leave for the dialler before the automatic save.
+        try? context.save()
     }
 }
 

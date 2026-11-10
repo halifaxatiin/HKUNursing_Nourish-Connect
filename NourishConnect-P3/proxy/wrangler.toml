@@ -9,10 +9,16 @@ MODEL = "deepseek/deepseek-v4.1-flash"
 # "deny" only routes to providers that do not collect user data. Use "allow" only for demos on fictional data.
 DATA_COLLECTION = "deny"
 DAILY_LIMIT = "100"
+# The install id can be made up, so each network address is limited too. Several phones can share
+# one address (a centre's Wi-Fi, a mobile network), so this is higher than DAILY_LIMIT.
+IP_DAILY_LIMIT = "300"
 GLOBAL_DAILY_LIMIT = "1000"
 
-# Daily limits need a KV namespace. Create one with:  npx wrangler kv namespace create LIMITS
-# then paste the id below and remove the leading #.
-# [[kv_namespaces]]
-# binding = "LIMITS"
-# id = "PASTE_ID_HERE"
+# The daily counter. Nothing to create by hand: `wrangler deploy` sets it up.
+[[durable_objects.bindings]]
+name = "LIMITS"
+class_name = "DailyCounter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["DailyCounter"]

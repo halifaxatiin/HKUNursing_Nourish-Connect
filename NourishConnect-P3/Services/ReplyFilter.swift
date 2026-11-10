@@ -13,18 +13,20 @@ enum InputGuard {
         "藥", "药", "胰島素", "胰岛素", "打針", "劑量", "剂量", "食幾多粒",
         "medication", "insulin", "dose", "dosage", "pill", "tablet"
     ]
+    private static let normalizedMedication = medicationTerms.map(TextNormalizer.normalize)
 
     static let diagnosisTerms: [String] = [
         "抑鬱症", "抑郁症", "焦慮症", "焦虑症", "精神病", "憂鬱症", "係咪有病",
         "diagnos", "depression"
     ]
+    private static let normalizedDiagnosis = diagnosisTerms.map(TextNormalizer.normalize)
 
     static func classify(_ text: String) -> Kind {
         let n = TextNormalizer.normalize(text)
-        if medicationTerms.contains(where: { n.contains(TextNormalizer.normalize($0)) }) {
+        if normalizedMedication.contains(where: { n.contains($0) }) {
             return .medication
         }
-        if diagnosisTerms.contains(where: { n.contains(TextNormalizer.normalize($0)) }) {
+        if normalizedDiagnosis.contains(where: { n.contains($0) }) {
             return .diagnosis
         }
         return .ok
@@ -48,6 +50,7 @@ enum ReplyFilter {
         "medication", "insulin", "dosage", "dose", "diagnos", "prescri", "antidepress",
         "iamadoctor", "iamanurse", "iamhuman"
     ]
+    private static let normalizedBlocked = blockedTerms.map(TextNormalizer.normalize)
 
     static let maxLength = 160
 
@@ -56,7 +59,7 @@ enum ReplyFilter {
         guard !trimmed.isEmpty else { return .blocked }
 
         let n = TextNormalizer.normalize(trimmed)
-        if blockedTerms.contains(where: { n.contains(TextNormalizer.normalize($0)) }) {
+        if normalizedBlocked.contains(where: { n.contains($0) }) {
             return .blocked
         }
         // Five or more digits in a row (after removing spaces and dashes) looks like a phone number.

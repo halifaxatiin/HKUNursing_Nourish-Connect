@@ -87,5 +87,6 @@ struct MealResultView: View {
             rating: assessment.overall?.storageKey ?? "unrated",
             note: "dish=\(dish.id); estimate"
         ))
+        try? context.save()
     }
 }

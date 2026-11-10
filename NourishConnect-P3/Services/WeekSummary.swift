@@ -22,16 +22,16 @@ enum WeekSummary {
                       calendar: Calendar = .current,
                       days: Int = 7) -> [DaySummary] {
         let today = calendar.startOfDay(for: now)
+        // Sort the records into days once, instead of searching every record for every day.
+        let moodsByDay = Dictionary(grouping: moods) { calendar.startOfDay(for: $0.date) }
+        let mealsByDay = Dictionary(grouping: meals) { calendar.startOfDay(for: $0.date) }
         var result: [DaySummary] = []
 
         for offset in 0..<days {
-            guard
-                let start = calendar.date(byAdding: .day, value: -offset, to: today),
-                let end = calendar.date(byAdding: .day, value: 1, to: start)
-            else { continue }
+            guard let start = calendar.date(byAdding: .day, value: -offset, to: today) else { continue }
 
-            let dayMoods = moods.filter { $0.date >= start && $0.date < end }
-            let dayMeals = meals.filter { $0.date >= start && $0.date < end }
+            let dayMoods = moodsByDay[start] ?? []
+            let dayMeals = mealsByDay[start] ?? []
             let levels: [Level] = dayMeals.compactMap { Level(storageKey: $0.rating) }
 
             result.append(DaySummary(
@@ -43,6 +43,12 @@ enum WeekSummary {
             ))
         }
         return result
+    }
+
+    /// The start of the day `daysBack` days before today. Screens use it to load only recent records.
+    static func cutoff(daysBack: Int, now: Date = .now, calendar: Calendar = .current) -> Date {
+        let today = calendar.startOfDay(for: now)
+        return calendar.date(byAdding: .day, value: -daysBack, to: today) ?? .distantPast
     }
 }
 
@@ -63,11 +69,16 @@ extension WeekSummary {
 /// Counts and mood words only: no product names, no times, no chat text.
 /// Nothing is sent by the app; the user picks the recipient in the share sheet.
 enum WeekShareText {
-    static func build(_ days: [DaySummary], alertCount: Int, calendar: Calendar = .current) -> String {
+    private static let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "zh_HK")
-        formatter.calendar = calendar
         formatter.dateFormat = "M月d日 EEEE"
+        return formatter
+    }()
+
+    static func build(_ days: [DaySummary], alertCount: Int, calendar: Calendar = .current) -> String {
+        formatter.calendar = calendar
+        formatter.timeZone = calendar.timeZone
 
         var lines = [Str.shareHeader]
         for day in days.reversed() {

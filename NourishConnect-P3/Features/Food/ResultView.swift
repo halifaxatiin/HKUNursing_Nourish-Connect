@@ -133,6 +133,7 @@ struct ResultView: View {
             rating: assessment.overall?.storageKey ?? "unrated",
             note: note
         ))
+        try? context.save()
     }
 }
 
