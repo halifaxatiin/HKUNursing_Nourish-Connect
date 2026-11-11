@@ -12,13 +12,11 @@
 		08D6C7023CF6CEEF924D6C3B /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BFECDE5E05E9432AB33C05 /* Components.swift */; };
 		08EDAEA5CCD2BBD047FB3B03 /* LabelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92396F9E996B86E8AC1011C3 /* LabelParser.swift */; };
 		1148619322C52B12C90109C9 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E22FA4BE5828266662C1B /* Alerts.swift */; };
-		186B963A997CC5CBA2E9EBFE /* DishDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ED618499642869C4226B03 /* DishDecision.swift */; };
 		1D8900D7E64DEAB62512C837 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E23697660F4AF84C1CF78 /* SpeechService.swift */; };
 		2D04746BBB5DE67A3F0E3112 /* Narration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E7633CB1E146072862785E /* Narration.swift */; };
 		33E1C55AF21A6087ACB3C5A1 /* ImageScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1480AF9954925348683B46 /* ImageScaling.swift */; };
 		3B8D38E85D49BD43E6C78356 /* LabelParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D675A01A7936CBFDE9D56EB3 /* LabelParserTests.swift */; };
 		421B91D3204C8C61E900A985 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630DAF879CEE75C9FB170EF /* Dish.swift */; };
-		4268B76AD81C42D5140AF88D /* MealPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883766AB32F781219DAF127 /* MealPhotoView.swift */; };
 		455362F444518F879B0D5985 /* NutritionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828823D9CD1400F13A33EE7D /* NutritionTests.swift */; };
 		5D0AED6E09268E1F26F2DF74 /* WeekSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C27C05E81D6FECC34468EA /* WeekSummary.swift */; };
 		60F51518C28494142B386D32 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02B497BFE2E2D9E0A4280FB /* ResultView.swift */; };
@@ -52,7 +50,6 @@
 		D52A086E013EBDD1F5A6D6B0 /* NourishConnectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE2B3A9951729A8CCD7D76 /* NourishConnectApp.swift */; };
 		DC04AAF9DB63D23A4A12376D /* Nutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4214430D2110272F349DF3A /* Nutrition.swift */; };
 		DF1CF008DA40A566311FC4F2 /* BreathingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5211E4EB5EA393C3B07AC17 /* BreathingPlan.swift */; };
-		E4D3E15D7CB3BB6C493A7F9D /* DishClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0813F6F226D5B0E3F7A9B4D /* DishClassifier.swift */; };
 		EA0C3F634079BBCBAEFD9840 /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90E8297ABCF4938791762CE /* MoodView.swift */; };
 		EA28A1C881139D732CF812A0 /* DishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADF27DF13C7CAF95ACB85F4 /* DishListView.swift */; };
 		FE764D0A66190D4E7DDE246B /* BreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8E135371374A9AF5D64E54 /* BreathingView.swift */; };
@@ -70,7 +67,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02ED618499642869C4226B03 /* DishDecision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDecision.swift; sourceTree = "<group>"; };
 		0630DAF879CEE75C9FB170EF /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		0707845A01DB093E73167927 /* MoodCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckView.swift; sourceTree = "<group>"; };
 		081F1E219646863CE6842158 /* MoodRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodRules.swift; sourceTree = "<group>"; };
@@ -90,7 +86,6 @@
 		6ADF27DF13C7CAF95ACB85F4 /* DishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishListView.swift; sourceTree = "<group>"; };
 		6FA6E8273E70297AE8CB8921 /* WellbeingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellbeingTests.swift; sourceTree = "<group>"; };
 		6FF33CBDF17165D147FE61AC /* DistressDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistressDetector.swift; sourceTree = "<group>"; };
-		7883766AB32F781219DAF127 /* MealPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPhotoView.swift; sourceTree = "<group>"; };
 		80E7633CB1E146072862785E /* Narration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Narration.swift; sourceTree = "<group>"; };
 		81C27C05E81D6FECC34468EA /* WeekSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSummary.swift; sourceTree = "<group>"; };
 		828823D9CD1400F13A33EE7D /* NutritionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionTests.swift; sourceTree = "<group>"; };
@@ -102,7 +97,6 @@
 		9B0FF1DF9CF6CBE1650BE99B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9C1480AF9954925348683B46 /* ImageScaling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScaling.swift; sourceTree = "<group>"; };
 		A03B46A42DCDCCD3D6A22FCE /* MealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTests.swift; sourceTree = "<group>"; };
-		A0813F6F226D5B0E3F7A9B4D /* DishClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishClassifier.swift; sourceTree = "<group>"; };
 		A250987EEB7D1E1FE169DC4C /* ReplyFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyFilter.swift; sourceTree = "<group>"; };
 		A5211E4EB5EA393C3B07AC17 /* BreathingPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingPlan.swift; sourceTree = "<group>"; };
 		A70388249D35BD01E7F851BB /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
@@ -152,8 +146,6 @@
 				A5211E4EB5EA393C3B07AC17 /* BreathingPlan.swift */,
 				DF48FEAE4B93981B49DFF67A /* ChatClient.swift */,
 				E8286D5BBC412E523137EF59 /* DemoData.swift */,
-				A0813F6F226D5B0E3F7A9B4D /* DishClassifier.swift */,
-				02ED618499642869C4226B03 /* DishDecision.swift */,
 				6FF33CBDF17165D147FE61AC /* DistressDetector.swift */,
 				9C1480AF9954925348683B46 /* ImageScaling.swift */,
 				92396F9E996B86E8AC1011C3 /* LabelParser.swift */,
@@ -173,7 +165,6 @@
 			children = (
 				6ADF27DF13C7CAF95ACB85F4 /* DishListView.swift */,
 				AA7C8B2F879DE1FF3B82BD2E /* FoodView.swift */,
-				7883766AB32F781219DAF127 /* MealPhotoView.swift */,
 				849EDACCF7884D8BDBCED612 /* MealResultView.swift */,
 				D02B497BFE2E2D9E0A4280FB /* ResultView.swift */,
 				DFD3AE2721F12C8D897535C3 /* ScanBarcodeView.swift */,
@@ -399,8 +390,6 @@
 				CC78FFAE544C2E4C6EAEB699 /* Config.swift in Sources */,
 				CC232A8889316CEDE1C7BDB6 /* DemoData.swift in Sources */,
 				421B91D3204C8C61E900A985 /* Dish.swift in Sources */,
-				E4D3E15D7CB3BB6C493A7F9D /* DishClassifier.swift in Sources */,
-				186B963A997CC5CBA2E9EBFE /* DishDecision.swift in Sources */,
 				EA28A1C881139D732CF812A0 /* DishListView.swift in Sources */,
 				61A43439BD817873CEEEDADA /* DistressDetector.swift in Sources */,
 				FED5CADE729B7D047B5B7DA3 /* FoodView.swift in Sources */,
@@ -408,7 +397,6 @@
 				33E1C55AF21A6087ACB3C5A1 /* ImageScaling.swift in Sources */,
 				08EDAEA5CCD2BBD047FB3B03 /* LabelParser.swift in Sources */,
 				79B6E461ECAC3878B55B88A4 /* LabelReader.swift in Sources */,
-				4268B76AD81C42D5140AF88D /* MealPhotoView.swift in Sources */,
 				075780275EF2C127E57ED23D /* MealResultView.swift in Sources */,
 				9EB4CA60431F89E158DAB3AD /* MealStrings.swift in Sources */,
 				75A3D9643181EB4C3F3DA653 /* Models.swift in Sources */,
@@ -593,7 +581,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "健康伴你行";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSCameraUsageDescription = "用相機掃描條碼、營養標籤同埋影你食嘅嘢";
+				INFOPLIST_KEY_NSCameraUsageDescription = "用相機掃描條碼同埋影營養標籤";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "用咪高風同你傾偈";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "將你講嘅廣東話變成文字，同你傾偈。如果手機自己做唔到，聲音會送去Apple處理";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -622,7 +610,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "健康伴你行";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_NSCameraUsageDescription = "用相機掃描條碼、營養標籤同埋影你食嘅嘢";
+				INFOPLIST_KEY_NSCameraUsageDescription = "用相機掃描條碼同埋影營養標籤";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "用咪高風同你傾偈";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "將你講嘅廣東話變成文字，同你傾偈。如果手機自己做唔到，聲音會送去Apple處理";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -1,8 +1,8 @@
 import UIKit
 import ImageIO
 
-/// Camera photos are 12 to 48 megapixels (about 50 to 190 MB once opened). The text reader and the
-/// dish model need far less, so photos are made smaller before they are kept or analysed.
+/// Camera photos are 12 to 48 megapixels (about 50 to 190 MB once opened). The text reader
+/// needs far less, so photos are made smaller before they are kept or analysed.
 extension UIImage {
     /// A copy, turned upright, whose longer side is at most `maxSide` pixels. Runs off the main thread.
     func scaledDown(maxSide: CGFloat) async -> UIImage {

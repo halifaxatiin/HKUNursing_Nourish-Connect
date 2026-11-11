@@ -54,13 +54,13 @@ enum Str {
     static let staffNote = "建議由職員幫手設定。"
 
     // Food hub
-    static let foodSpoken = "你可以掃描條碼，或者影包裝上嘅營養標籤。"
+    static let foodSpoken = "你可以掃描條碼，或者影包裝上嘅營養標籤。冇包裝嘅食物，例如飯同麵，可以喺清單揀。"
     static let scanBarcode = "掃描條碼"
     static let scanBarcodeHint = "對正包裝上嘅條碼"
     static let scanLabel = "影營養標籤"
     static let scanLabelHint = "影包裝上嘅營養資料"
-    static let mealPhoto = "影整餐嘢"
-    static let mealPhotoHint = "影張相，或者喺清單揀"
+    static let pickFood = "揀食物"
+    static let pickFoodHint = "喺清單揀你食嘅嘢"
 
     // Barcode scan
     static let barcodeTitle = "掃描條碼"

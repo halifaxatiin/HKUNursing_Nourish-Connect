@@ -208,7 +208,7 @@ The demo is a standalone iPhone app with two features, nutrition and emotional s
 | Nurse and worker side | No second app or console in the demo; scans, moods and alerts are saved on the phone only | Review service, worker console, review-request endpoints and SafetyEvent notifications are deferred |
 | Emotional alert | Kept as the standout feature: a mood check and distress words trigger a one-touch call or message to a chosen contact | Runs on the phone, with no server in the alert path |
 | Language model | DeepSeek for text only (label explanations, chat, healthy-living tips) | It cannot read images, so image work is done by Apple's on-device frameworks |
-| Scan options | Two: barcode / nutrition label, and meal | Both stay; the meal scan is limited to a fixed dish list for the demo (below) |
+| Food options | Two: scan a barcode / nutrition label, or pick a dish from a list grouped by category | The meal photo scan (recognising food from a photo) is cancelled: it was redundant with the list it always fell back to. Unpackaged food is chosen from a fixed dish list (below) |
 
 **What sets it apart from other food-scanning apps.** Barcode scanners already exist, so the pitch rests on three things they lack: a Cantonese, voice-first explanation of the label in plain words for an older adult; a mood check that sits beside the food diary so food and mood can be seen together; and an alert that reaches a trusted person when the mood check or chat shows distress. Healthy-living tips come from these two sources, not from a separate feature.
 
@@ -221,15 +221,14 @@ The demo is a standalone iPhone app with two features, nutrition and emotional s
 | Which OS? | iOS 17 or later on iPhone, written in Swift with SwiftUI. iOS 17 is chosen so SwiftData and the camera scanner frameworks are available; confirm the test phone runs it. |
 | Where does barcode and nutrition data come from? | Open Food Facts (free, open database, queried by barcode) as the first lookup. If the product is missing, the app photographs the nutrition label and reads it on the phone with Apple's text recognition, then parses it. Hong Kong prepackaged food carries a standard "1+7" label (energy plus protein, carbohydrates, total fat, saturated fat, trans fat, sugars, sodium), which gives a fixed set of fields to parse. Check Open Food Facts' licence terms and its Hong Kong coverage; the Centre for Food Safety's nutrient database is a second source to review. |
 | How does the app "recognise what the label says"? | On the phone: barcode scan and label text recognition with Apple's VisionKit and Vision frameworks. The numbers are parsed into fixed fields and compared with traffic-light thresholds agreed with a nurse or dietitian. DeepSeek then receives only those numbers as text and returns a short Cantonese explanation, which the phone reads aloud. |
-| Where does DeepSeek fit, given it reads text only? | Three text jobs: explain a label in plain Cantonese, power the companion chat, and write healthy-living tips from the day's meals and moods. It never sees a photo. Barcode, label and meal recognition stay on the phone. |
-| What if there is no label (mixed Asian dishes)? | Use the meal scan, with limits stated openly. A small image classifier trained with Apple's Create ML runs on the phone for a fixed list of common Hong Kong dishes (target 20 to 30 for the demo). Each dish carries a nutrition range from a published reference, so a result is a range and a traffic light, never a precise figure. The app asks "Is this wonton noodles?" before showing anything. Below a confidence threshold, or for a dish outside the list, it says "I'm not sure" and offers a pick-from-list screen instead of guessing. |
-| Won't the meal scan hallucinate beyond its training data? | Yes, which is why it does not generate answers: it only picks from a closed list and can decline. A classifier trained on a few hundred photos per dish will not cover real life, so the demo is built around a known set. Growing the list means more photos and more reference data per dish, and that cost is real; the plan treats it as a post-demo budget line, not something the demo claims to solve. |
-| Where does the training data come from? | The team photographs or sources licensed photos for each listed dish (aim for roughly 100 to 200 per dish, varied lighting and plates), plus a "not food / unknown" class. Public food datasets help little with local dishes, and any photos from users are added only with consent. |
-| Which model, and where does it run? | The meal classifier runs on the phone (no server cost). DeepSeek runs on DeepSeek's servers, called through a small serverless proxy that holds the API key so it is never inside the app. No language model runs on the phone. |
+| Where does DeepSeek fit, given it reads text only? | Three text jobs: explain a label in plain Cantonese, power the companion chat, and write healthy-living tips from the day's meals and moods. It never sees a photo. Barcode and label reading stay on the phone. |
+| What if there is no label (mixed Asian dishes)? | The user picks the dish from a list. The list holds common Hong Kong dishes (about 25 for the demo) grouped by category: rice, noodles, congee, dim sum, dishes, bread and pastries, fruit, drinks. Each button is large and the screen is read aloud. Each dish carries nutrition values from a published reference, shown as an estimate with a traffic light, never as a precise figure. |
+| Why not recognise the meal from a photo? | Cancelled. A photo classifier needs hundreds of photos per dish, still misidentifies similar dishes (for example char siu rice and roast goose rice), and had to ask "is it this?" and fall back to the list anyway. Picking from the list is one tap, always right about which dish was chosen, works with no camera or model, and removes the training-data cost. A dish that is not on the list simply cannot be logged yet; growing the list needs only reference data per dish. |
+| Which model, and where does it run? | No model runs on the phone. Barcode and label reading use Apple's built-in frameworks. DeepSeek runs on DeepSeek's servers, called through a small serverless proxy that holds the API key so it is never inside the app. |
 | What does the server cost? | Two items: the DeepSeek API, billed per token, and the proxy, which fits a serverless free tier at demo traffic. Both should be small at demo scale; confirm the current DeepSeek rate card and set a monthly spending cap. The cost grows with users, so cap each user's daily messages. |
 | Data privacy with DeepSeek | Send only numbers and short, name-free text. Treat the call as a transfer to an external provider: confirm where DeepSeek processes data and review it against Hong Kong's Personal Data (Privacy) Ordinance before any real user data is used. The demo uses fictional data. |
 | Send to the nurse | Removed for the demo. Records are saved on the phone only; a weekly summary through the share sheet is the stretch item. |
-| Practice mode and adding purchases to training data | Dropped. Nothing the user scans is used to train a model. |
+| Practice mode and adding purchases to training data | Dropped. Nothing the user scans or picks is used to train a model. |
 
 ## App structure in Swift
 
@@ -240,7 +239,7 @@ One Xcode project, SwiftUI for every screen, and a feature-per-folder layout so 
 | App shell and navigation | Big-button home screen with Food, Mood and Help; one screen at a time; text size and contrast settings | SwiftUI, Dynamic Type |
 | Barcode and label scanning | Live barcode scan; photo of the nutrition label; text recognition | VisionKit `DataScannerViewController`, Vision `VNRecognizeTextRequest` |
 | Nutrition lookup and parsing | Open Food Facts call by barcode; parse the "1+7" label text into fields; traffic-light rating | `URLSession`, own parser, a rules file reviewed by the nurse |
-| Meal scan | Camera photo, classify against the dish list, confirmation question, pick-from-list fallback | Core ML model from Create ML, Vision |
+| Food list | Pick a dish from a list grouped by category; estimate with traffic light; saved as a meal | SwiftUI, a bundled dish list reviewed by a dietitian |
 | Cantonese voice | Read results and prompts aloud; optional voice reply for mood and chat | `AVSpeechSynthesizer` with a Cantonese voice, Speech framework (verify Cantonese recognition on the test phone) |
 | Mood check | Three large buttons (okay, a bit lonely, not well), logged with the date | SwiftUI, SwiftData |
 | Breathing and grounding audio | Short guided audio with a visual cue | `AVAudioPlayer`, bundled audio files |
@@ -257,7 +256,7 @@ One Xcode project, SwiftUI for every screen, and a feature-per-folder layout so 
 NourishConnect/
   App/            entry point, navigation, settings
   Features/
-    Scan/         barcode, label OCR, meal classifier, results screen
+    Food/         barcode, label OCR, categorised dish list, results screens
     Mood/         mood check, breathing audio
     Chat/         companion chat, distress rules, call screen
   Services/       OpenFoodFacts, DeepSeekClient, Speech, Notifications
@@ -277,29 +276,29 @@ NourishConnect/
 
 &#91;embedded content: build roadmap · 6 phases, 6 gates\]
 
-The meal scan comes last because it carries the most technical risk. If it slips, the demo still shows label scanning, the mood check, the chat and the alert.
+The meal photo scan that used to be phase 4 is cancelled and replaced by the categorised dish list, which carries little technical risk. (The roadmap picture above still shows the old phase 4.)
 
 ## Phases, tasks and exit checks
 
-The order puts the emotional features ahead of the meal scan, because they are what sets the app apart and carry less technical risk. Photo collection for the meal scan starts in phase 0 so it does not block phase 4. No dates are given because the demo deadline is not in this document; map the phases onto the weeks you have.
+The order puts the emotional features ahead of the food list, because they are what sets the app apart. No dates are given because the demo deadline is not in this document; map the phases onto the weeks you have.
 
 | Phase | Tasks | Exit check |
 | --- | --- | --- |
-| 0. Setup and decisions | Install Xcode on a Mac; create the project and a shared repository; get a test iPhone on iOS 17 or later; open a DeepSeek account with a spending cap; choose the dish list (20 to 30 dishes) and start photo collection; ask a nurse or dietitian to review the traffic-light thresholds and chat wording | App builds and runs on the phone; dish list and thresholds agreed in writing |
+| 0. Setup and decisions | Install Xcode on a Mac; create the project and a shared repository; get a test iPhone on iOS 17 or later; open a DeepSeek account with a spending cap; choose the dish list (20 to 30 dishes) and its categories; ask a nurse or dietitian to review the traffic-light thresholds and chat wording | App builds and runs on the phone; dish list and thresholds agreed in writing |
 | 1. Foundations | Home screen with three large buttons; text size and contrast settings; SwiftData models; Cantonese strings file; text-to-speech on every screen; local storage of settings and contacts | A first-time tester can reach Food, Mood and Help with voice on |
 | 2. Barcode and label nutrition | Live barcode scan; Open Food Facts lookup; label photo and text recognition; "1+7" parser with unit tests; traffic-light rules; results screen with spoken Cantonese explanation (template first, DeepSeek wording after the proxy exists) | Ten real Hong Kong products give correct fields, or a clear "couldn't read it" message |
 | 3. Mood, chat and alert | Three-tap mood check; breathing audio; on-phone distress rules; call screen with confirmation hold; message and call to the chosen contact; proxy and DeepSeek client; companion chat with boundary text and output filter; healthy-living tips from the day's meals and moods; mood and meals side by side in a simple weekly view | A scripted "not well" mood and a distress phrase both reach the call screen with the network off; chat never gives medication or diagnosis advice in 20 test prompts |
-| 4. Meal scan | Train the Core ML classifier in Create ML; confirmation question; confidence threshold; pick-from-list fallback; nutrition ranges per dish from the reference | Held-out photos of listed dishes meet the accuracy the team sets (suggest at least 85% top-1 on the demo list); an unlisted dish returns "I'm not sure" |
+| 4. Food list | Dish list grouped by category with large buttons and voice; nutrition values per dish from the reference; estimate wording on the result | Every listed dish opens a result with a traffic light and the word "estimate"; a first-time tester finds a named dish without help |
 | 5. Polish and demo | Test with an older adult or proxy tester; fix text size, touch targets and speech speed; write a demo script on fictional data; optional weekly summary via the share sheet; install through TestFlight (needs a paid Apple developer account) or directly from Xcode | One full scripted run of food, mood and alert with no stalls; a fallback screen recording ready |
 
 ## Risks to the build
 
 | Risk | Impact | Response |
 | --- | --- | --- |
-| Meal scan misidentifies a dish | Wrong nutrition guidance | Closed dish list, confirmation question, "I'm not sure" state, ranges instead of numbers |
+| Dish values differ from what was actually eaten, or the dish is not on the list | Misleading or missing nutrition guidance | Values signed off by a dietitian; every result says "estimate"; the user picks the dish, the app never guesses; grow the list after the demo |
 | Product missing from Open Food Facts or label unreadable | No result at the demo | Label photo fallback; keep a small bundled list of demo products |
 | Cantonese speech recognition or voice quality is poor on the phone | Voice features fail | Test early in phase 1; use buttons first and voice as an extra |
-| DeepSeek cannot read images and cost or availability changes | Features that need it stop | Keep label and meal work on the phone; use template wording as a fallback; set a spending cap |
+| DeepSeek cannot read images and cost or availability changes | Features that need it stop | Keep label reading and the dish list on the phone; use template wording as a fallback; set a spending cap |
 | Distress rules miss or over-trigger | Missed alert or alarm fatigue | Rules reviewed by a nurse; test with scripted phrases; log every trigger |
 | Data leaves the phone to an external provider | Privacy exposure | Send numbers and name-free text only; fictional data in the demo; review before real users |
 | No Mac or Apple developer account | Cannot build or install | Settle in phase 0; a Mac and a cable are enough for the demo |

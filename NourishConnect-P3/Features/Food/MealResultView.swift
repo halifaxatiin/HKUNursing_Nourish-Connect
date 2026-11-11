@@ -1,8 +1,8 @@
 import SwiftUI
 import SwiftData
 
-/// Result for a dish the user confirmed or picked. Numbers are estimates and say so.
-/// Saved on the phone as a MealEntry with source "meal". The photo is not saved.
+/// Result for a dish the user picked from the list. Numbers are estimates and say so.
+/// Saved on the phone as a MealEntry with source "meal".
 struct MealResultView: View {
     @Environment(\.theme) private var theme
     @Environment(\.modelContext) private var context
@@ -57,7 +57,7 @@ struct MealResultView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Label(Str.scanAgain, systemImage: "arrow.uturn.backward")
+                    Label(Str.mealPickAnother, systemImage: "arrow.uturn.backward")
                         .font(theme.font(22, weight: .semibold))
                         .frame(maxWidth: .infinity, minHeight: 56)
                 }
