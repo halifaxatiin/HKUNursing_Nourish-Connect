@@ -27,42 +27,28 @@ final class DishCatalogTests: XCTestCase {
         XCTAssertEqual(NutritionAssessment.assess(DishCatalog.dish(id: "char_siu_rice")!.facts).sodium, .middle)
     }
 
+    func testEveryDishAppearsOnceInTheSections() {
+        let listed = DishCatalog.sections.flatMap { $0.dishes.map(\.id) }
+        XCTAssertEqual(listed.count, DishCatalog.all.count)
+        XCTAssertEqual(Set(listed), Set(DishCatalog.all.map(\.id)))
+    }
+
+    func testSectionsFollowCategoryOrderAndAreNeverEmpty() {
+        let order = DishCatalog.sections.map(\.category)
+        XCTAssertEqual(order, DishCategory.allCases.filter { order.contains($0) })
+        XCTAssertTrue(DishCatalog.sections.allSatisfy { !$0.dishes.isEmpty })
+        XCTAssertTrue(DishCategory.allCases.allSatisfy { !$0.title.isEmpty })
+    }
+
+    func testCategoriesOfKnownDishes() {
+        XCTAssertEqual(DishCatalog.dish(id: "wonton_noodles")?.category, .noodles)
+        XCTAssertEqual(DishCatalog.dish(id: "har_gow")?.category, .dimSum)
+        XCTAssertEqual(DishCatalog.dish(id: "hk_milk_tea")?.category, .drinks)
+        XCTAssertEqual(DishCatalog.dishes(in: .rice).first?.id, "steamed_rice")
+    }
+
     func testLookup() {
         XCTAssertEqual(DishCatalog.dish(id: "egg_tart")?.name, "蛋撻")
         XCTAssertNil(DishCatalog.dish(id: "nope"))
-    }
-}
-
-final class DishDecisionTests: XCTestCase {
-    func testConfidentGuessIsStillAQuestion() {
-        let result = DishDecision.decide([RawGuess(id: "egg_tart", confidence: 0.95)])
-        XCTAssertEqual(result, .confirm(DishCatalog.dish(id: "egg_tart")!))
-    }
-
-    func testUnsureOffersUpToThree() {
-        let result = DishDecision.decide([
-            RawGuess(id: "har_gow", confidence: 0.4),
-            RawGuess(id: "siu_mai", confidence: 0.3),
-            RawGuess(id: "rice_roll", confidence: 0.2),
-            RawGuess(id: "egg_tart", confidence: 0.15)
-        ])
-        guard case .choose(let dishes) = result else { return XCTFail("expected choose") }
-        XCTAssertEqual(dishes.map(\.id), ["har_gow", "siu_mai", "rice_roll"])
-    }
-
-    func testNoUsefulGuessShowsList() {
-        XCTAssertEqual(DishDecision.decide([]), .list)
-        XCTAssertEqual(DishDecision.decide([RawGuess(id: "egg_tart", confidence: 0.05)]), .list)
-    }
-
-    func testUnknownLabelsAreIgnored() {
-        XCTAssertEqual(DishDecision.decide([RawGuess(id: "pizza", confidence: 0.99)]), .list)
-    }
-
-    func testNoModelMeansNotAvailable() {
-        // The model ships separately; without it the app falls back to the list.
-        if Bundle.main.url(forResource: CoreMLDishClassifier.modelName, withExtension: "mlmodelc") == nil {
-            XCTAssertFalse(CoreMLDishClassifier().isAvailable)
-        }
     }
 }

@@ -6,7 +6,7 @@ enum FoodRoute: Hashable {
     case meal
 }
 
-/// Food hub: scan a barcode, or photograph the nutrition label. Or photograph a meal.
+/// Food hub: scan a barcode, photograph the nutrition label, or pick a dish from the list.
 struct FoodView: View {
     @Environment(\.theme) private var theme
 
@@ -28,9 +28,9 @@ struct FoodView: View {
                 .buttonStyle(.plain)
 
                 NavigationLink(value: FoodRoute.meal) {
-                    BigButtonLabel(title: Str.mealPhoto,
-                                   hint: Str.mealPhotoHint,
-                                   systemImage: "camera.macro")
+                    BigButtonLabel(title: Str.pickFood,
+                                   hint: Str.pickFoodHint,
+                                   systemImage: "list.bullet")
                 }
                 .buttonStyle(.plain)
 
@@ -44,7 +44,7 @@ struct FoodView: View {
             switch route {
             case .barcode: ScanBarcodeView()
             case .label: ScanLabelView()
-            case .meal: MealPhotoView()
+            case .meal: DishListView()
             }
         }
         .speaksOnAppear(Str.foodSpoken)

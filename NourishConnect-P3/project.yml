@@ -28,7 +28,7 @@ targets:
         DEVELOPMENT_TEAM: 64Q949Q8PY
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: 健康伴你行
-        INFOPLIST_KEY_NSCameraUsageDescription: 用相機掃描條碼、營養標籤同埋影你食嘅嘢
+        INFOPLIST_KEY_NSCameraUsageDescription: 用相機掃描條碼同埋影營養標籤
         INFOPLIST_KEY_NSMicrophoneUsageDescription: 用咪高風同你傾偈
         INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: 將你講嘅廣東話變成文字，同你傾偈。如果手機自己做唔到，聲音會送去Apple處理
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
