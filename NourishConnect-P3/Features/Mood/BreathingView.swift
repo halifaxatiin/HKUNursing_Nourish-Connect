@@ -14,6 +14,7 @@ struct BreathingView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var speech: SpeechService
+    @Environment(\.horizontalSizeClass) private var sizeClass
 
     @State private var stage: Stage = .idle
     @State private var cue = ""
@@ -32,12 +33,18 @@ struct BreathingView: View {
                 }
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.breathingTitle)
         .navigationBarTitleDisplayMode(.inline)
         .speaksOnAppear(Str.breathingSpoken)
         .onDisappear(perform: leave)
     }
+
+    /// A larger circle when the screen has room (iPad full screen); the original size otherwise.
+    private var circleSide: CGFloat { sizeClass == .regular ? 360 : 260 }
+
+    private var circleAreaHeight: CGFloat { sizeClass == .regular ? 380 : 280 }
 
     // MARK: Stages
 
@@ -66,10 +73,10 @@ struct BreathingView: View {
             Circle()
                 .fill(theme.fill().opacity(0.25))
                 .overlay(Circle().stroke(theme.fill(), lineWidth: 6))
-                .frame(width: 260, height: 260)
+                .frame(width: circleSide, height: circleSide)
                 .scaleEffect(scale)
         }
-        .frame(height: 280)
+        .frame(height: circleAreaHeight)
         .accessibilityHidden(true)
 
         Text(cue)

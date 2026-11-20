@@ -41,6 +41,7 @@ struct DishListView: View {
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
+            .contentColumn()
         }
         .navigationTitle(Str.mealListTitle)
         .navigationBarTitleDisplayMode(.inline)

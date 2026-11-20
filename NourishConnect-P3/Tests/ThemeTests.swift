@@ -27,4 +27,14 @@ final class ThemeTests: XCTestCase {
     func testCallConfirmationNamesTheContact() {
         XCTAssertTrue(Str.callConfirmTitle("陳姑娘").contains("陳姑娘"))
     }
+
+    func testContentColumnClampsOnWideScreens() {
+        XCTAssertEqual(ResponsiveLayout.columnWidth(available: 1024), 680)
+        XCTAssertEqual(ResponsiveLayout.columnWidth(available: 768), 680)
+    }
+
+    func testContentColumnKeepsNarrowScreensUnchanged() {
+        XCTAssertEqual(ResponsiveLayout.columnWidth(available: 390), 390)
+        XCTAssertEqual(ResponsiveLayout.columnWidth(available: 320), 320)
+    }
 }

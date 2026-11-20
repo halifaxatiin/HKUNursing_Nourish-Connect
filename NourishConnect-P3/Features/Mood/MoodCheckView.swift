@@ -35,6 +35,7 @@ struct MoodCheckView: View {
                 }
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.moodCheckTitle)
         .navigationBarTitleDisplayMode(.inline)

@@ -67,6 +67,7 @@ struct CallScreenView: View {
                 .controlSize(.large)
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.callTitle)
         .navigationBarTitleDisplayMode(.inline)

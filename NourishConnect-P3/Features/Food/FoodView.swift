@@ -37,6 +37,7 @@ struct FoodView: View {
                 ReadAloudButton(text: Str.foodSpoken)
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.food)
         .navigationBarTitleDisplayMode(.inline)

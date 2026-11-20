@@ -37,6 +37,7 @@ struct MoodView: View {
                 ReadAloudButton(text: Str.moodSpoken)
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.mood)
         .navigationBarTitleDisplayMode(.inline)

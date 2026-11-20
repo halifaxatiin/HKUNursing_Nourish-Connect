@@ -71,6 +71,7 @@ struct MealResultView: View {
                     .foregroundStyle(.secondary)
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.mealResultTitle)
         .navigationBarTitleDisplayMode(.inline)
