@@ -73,6 +73,7 @@ struct ResultView: View {
                     .foregroundStyle(.secondary)
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.resultTitle)
         .navigationBarTitleDisplayMode(.inline)

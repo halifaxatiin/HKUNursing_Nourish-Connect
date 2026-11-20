@@ -11,12 +11,16 @@ struct ScanLabelView: View {
 
     @Environment(\.theme) private var theme
     @EnvironmentObject private var speech: SpeechService
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @StateObject private var handle = ScannerHandle()
     @State private var phase: Phase = .ready
     @State private var outcome: ScanOutcome?
     @State private var pickerItem: PhotosPickerItem?
     /// Kept large so small print on a label stays readable, but well under a 48 MP photo.
     private static let maxPhotoSide: CGFloat = 3000
+
+    /// Taller preview when the screen has room (iPad full screen).
+    private var scannerHeight: CGFloat { sizeClass == .regular ? 420 : 340 }
 
     var body: some View {
         ScrollView {
@@ -27,6 +31,7 @@ struct ScanLabelView: View {
                 ReadAloudButton(text: Str.labelSpoken)
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.labelTitle)
         .navigationBarTitleDisplayMode(.inline)
@@ -53,7 +58,7 @@ struct ScanLabelView: View {
                 ScannerView(mode: .text,
                             handle: handle,
                             isActive: outcome == nil && phase != .reading)
-                    .frame(height: 340)
+                    .frame(height: scannerHeight)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
 
                 Button {

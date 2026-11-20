@@ -69,6 +69,7 @@ struct ChatView: View {
             }
             inputBar
         }
+        .contentColumn()
         .navigationTitle(Str.chatTitle)
         .navigationBarTitleDisplayMode(.inline)
         .fullScreenCover(item: $callReason) { CallScreenCover(reason: $0) }

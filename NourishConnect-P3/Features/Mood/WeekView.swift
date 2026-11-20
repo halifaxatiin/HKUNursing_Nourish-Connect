@@ -61,6 +61,7 @@ struct WeekView: View {
                     .multilineTextAlignment(.center)
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.weekTitle)
         .navigationBarTitleDisplayMode(.inline)

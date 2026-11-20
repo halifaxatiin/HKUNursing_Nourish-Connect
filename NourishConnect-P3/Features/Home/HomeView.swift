@@ -46,6 +46,7 @@ struct HomeView: View {
                 .controlSize(.large)
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.appName)
         .navigationBarTitleDisplayMode(.inline)

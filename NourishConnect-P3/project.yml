@@ -34,11 +34,13 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
-        TARGETED_DEVICE_FAMILY: "1"
+        # iPad runs in portrait and may share the screen (Split View / Slide Over).
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown"
+        INFOPLIST_KEY_UIRequiresFullScreen: "NO"
+        TARGETED_DEVICE_FAMILY: "1,2"
         MARKETING_VERSION: "0.5.0"
         CURRENT_PROJECT_VERSION: "1"
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
-        INFOPLIST_KEY_UIRequiresFullScreen: YES
   NourishConnectTests:
     type: bundle.unit-test
     platform: iOS

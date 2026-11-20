@@ -12,12 +12,16 @@ struct ScanBarcodeView: View {
 
     @Environment(\.theme) private var theme
     @EnvironmentObject private var speech: SpeechService
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @StateObject private var handle = ScannerHandle()
     @State private var phase: Phase = .scanning
     @State private var outcome: ScanOutcome?
     @State private var typed = ""
 
     private let client = OpenFoodFactsClient()
+
+    /// Taller preview when the screen has room (iPad full screen).
+    private var scannerHeight: CGFloat { sizeClass == .regular ? 420 : 320 }
 
     var body: some View {
         ScrollView {
@@ -28,6 +32,7 @@ struct ScanBarcodeView: View {
                 ReadAloudButton(text: Str.barcodeSpoken)
             }
             .padding(20)
+            .contentColumn()
         }
         .navigationTitle(Str.barcodeTitle)
         .navigationBarTitleDisplayMode(.inline)
@@ -44,7 +49,7 @@ struct ScanBarcodeView: View {
                         handle: handle,
                         isActive: phase == .scanning,
                         onBarcode: { found($0) })
-                .frame(height: 320)
+                .frame(height: scannerHeight)
                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         } else {
             Text(Str.scannerUnavailable)
